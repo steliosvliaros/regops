@@ -1,0 +1,3 @@
+task_code,rule_scope,consultation_days,consultation_type,consultation_channel,trigger_event,legal_source,notes
+ENV_022,DIM[classification=A1;environmental_regime=AEPO],45,authority_consultation,"Via statutory circulation by competent authority","AEPO file circulated for opinions","GR_LAW_4014_2011:Art3","Working days."
+ENV_022,DIM[classification=A2;environmental_regime=AEPO],35,authority_consultation,"Via statutory circulation by competent authority","AEPO file circulated for opinions","GR_LAW_4014_2011:Art4","Working days."

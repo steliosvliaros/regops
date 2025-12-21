@@ -1,0 +1,43 @@
+task_code,rule_scope,max_days,trigger_event,legal_source,notes
+ENV_022,DIM[classification=A1;environmental_regime=AEPO],45,AEPO file sent for consultation/opinions,GR_LAW_4014_2011:Art3,Working days (εργάσιμες). Statutory consultation/opinion window for A1.
+ENV_022,DIM[classification=A2;environmental_regime=AEPO],35,AEPO file sent for consultation/opinions,GR_LAW_4014_2011:Art4,Working days (εργάσιμες). Statutory consultation/opinion window for A2.
+ENV_023,DIM[classification=A1;environmental_regime=AEPO],45,Consultation window ends,GR_LAW_4014_2011:Art3,Working days. Derived from explicit steps: evaluation (20) + draft AEPO (25).
+ENV_023,DIM[classification=A2;environmental_regime=AEPO],35,Consultation window ends,GR_LAW_4014_2011:Art4,Working days. Derived from explicit steps: evaluation (20) + draft AEPO (15).
+PUB_120,DIM[environmental_regime=AEPO],30,AEPO decision signed,GR_LAW_4014_2011:Art19a,Law states publication within one month; encoded as 30 calendar days.
+DEV_002,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DEV_003,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DEV_004,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DEV_005,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DEV_006,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_010,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_011,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_012,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_013,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_020,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_021,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_024,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_030,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+ENV_031,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+LIC_040,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+LIC_041,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+LIC_042,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_050,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_052,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_053,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_054,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_055,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_056,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_057,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_058,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_059,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+GRID_060,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+CONSTR_070,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+CONSTR_071,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+COMM_080,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+MOD_100,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+MOD_101,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+MOD_102,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DECOM_110,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DECOM_111,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DECOM_112,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).
+DECOM_113,DIM[classification=ANY],,Task start,,No statutory deadline (explicitly recorded).

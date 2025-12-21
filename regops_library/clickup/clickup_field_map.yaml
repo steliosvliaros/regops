@@ -1,0 +1,123 @@
+task_code_field_name: "Task Code"
+
+statuses:
+  global:
+    - Draft informing
+    - Not Started
+    - In Progress
+    - Submitted
+    - Awaiting Authority
+    - Silent Approval Window
+    - Approved
+    - Published / Notified
+    - Completed
+    - Blocked — Legal
+    - Blocked — Practical
+    - Cancelled
+
+custom_fields:
+  - name: "Task Code"
+    type: "text"
+    options: []
+    required: true
+    maps_from_library_field: "workflow.tasks.task_code"
+
+  - name: "Phase"
+    type: "dropdown"
+    options: ["DEV", "ENV", "ENERGY_LICENSE", "GRID", "CONSTR", "COMM", "OPER", "MOD", "DECOM"]
+    required: true
+    maps_from_library_field: "workflow.tasks.phase_code"
+
+  - name: "Classification"
+    type: "dropdown"
+    options: ["A1", "A2", "B", "B1", "B2"]
+    required: true
+    maps_from_library_field: "project_profile.classification"
+
+  - name: "Environmental Regime"
+    type: "dropdown"
+    options: ["AEPO", "PPD", "COMMITMENTS", "EXEMPT"]
+    required: true
+    maps_from_library_field: "project_profile.environmental_regime"
+
+  - name: "Project Type"
+    type: "dropdown"
+    options: ["PV", "PV_STORAGE", "STORAGE"]
+    required: true
+    maps_from_library_field: "project_profile.project_type"
+
+  - name: "Grid Interaction"
+    type: "dropdown"
+    options: ["DEDDHE", "ADMIE", "NON_GRID", "ISLANDED"]
+    required: true
+    maps_from_library_field: "project_profile.grid_interaction"
+
+  - name: "Capacity Band"
+    type: "dropdown"
+    options: ["LTE_500KW", "LTE_1MW", "MW_1_20", "GT_20MW"]
+    required: true
+    maps_from_library_field: "project_profile.capacity_band"
+
+  - name: "Regulatory Path"
+    type: "dropdown"
+    options: ["STANDARD", "FAST_TRACK", "EXEMPT"]
+    required: true
+    maps_from_library_field: "project_profile.regulatory_path"
+
+  - name: "Location Constraint"
+    type: "dropdown"
+    options: ["NATURA", "FOREST", "ARCHAEOLOGY", "NONE"]
+    required: true
+    maps_from_library_field: "project_profile.location_constraint"
+
+  - name: "Legal Basis"
+    type: "text"
+    options: []
+    required: true
+    maps_from_library_field: "workflow.task_legal_basis aggregated"
+
+  - name: "Actor Role"
+    type: "dropdown"
+    options: ["APPROVING", "CONSULTING", "OPINION", "PUBLISHING", "NOTIFIED", "GRID_OPERATOR"]
+    required: false
+    maps_from_library_field: "workflow.task_roles.actor_role_code"
+
+  - name: "Competent Authority"
+    type: "text"
+    options: []
+    required: false
+    maps_from_library_field: "workflow.task_roles.authority_name"
+
+  - name: "Hard Legal Blocker"
+    type: "dropdown"
+    options: ["Yes", "No"]
+    required: true
+    maps_from_library_field: "workflow.tasks.hard_legal_blocker"
+
+  - name: "Statutory Max Days"
+    type: "number"
+    options: []
+    required: false
+    maps_from_library_field: "rules.statutory_durations.max_days"
+
+  - name: "Practical Typical Days"
+    type: "number"
+    options: []
+    required: false
+    maps_from_library_field: "overlay.practical_durations.typical_days"
+
+  - name: "Risk Level"
+    type: "dropdown"
+    options: ["Low", "Medium", "High"]
+    required: false
+    maps_from_library_field: "overlay.risks.risk_level"
+
+sync_policy:
+  - "Library is authoritative for definitions, required fields, mappings, dependencies."
+  - "ClickUp is authoritative for status and actual dates."
+  - "Upsert is idempotent by Task Code; never create duplicates."
+
+template_strategy:
+  mode: "provision_plan_json"
+  notes:
+    - "Provision plan is the authoritative record; API provisioning is best-effort."

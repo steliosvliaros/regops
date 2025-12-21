@@ -1,0 +1,31 @@
+items:
+  - code: APPROVING
+    greek_label: "Αποφαινόμενος"
+    english_label: "Approving"
+    definition: "Authority that issues the binding decision/act."
+    legal_anchor: ""
+  - code: CONSULTING
+    greek_label: "Γνωμοδοτών"
+    english_label: "Consulting"
+    definition: "Authority consulted in a procedure."
+    legal_anchor: ""
+  - code: OPINION
+    greek_label: "Άποψη"
+    english_label: "Opinion"
+    definition: "Opinion-giving body (non-binding)."
+    legal_anchor: ""
+  - code: PUBLISHING
+    greek_label: "Δημοσίευση"
+    english_label: "Publishing"
+    definition: "Publication/registry operator (Diavgeia/FEK/registry)."
+    legal_anchor: ""
+  - code: NOTIFIED
+    greek_label: "Κοινοποιούμενος"
+    english_label: "Notified"
+    definition: "Recipient of a notification."
+    legal_anchor: ""
+  - code: GRID_OPERATOR
+    greek_label: "Διαχειριστής"
+    english_label: "Grid operator"
+    definition: "Grid operator (ADMIE/DEDDHE) performing grid procedures."
+    legal_anchor: ""

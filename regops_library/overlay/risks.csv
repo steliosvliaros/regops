@@ -1,0 +1,8 @@
+risk_id,task_code,rule_scope,risk_text,probability_1_5,impact_1_5,risk_level,drivers,mitigations,evidence_tag
+RSK_001,DEV_002,BASE_000_CORE,"Misclassification causes full rework of environmental path and schedule.",3,5,High,"Ambiguous thresholds; incomplete footprint; mixed configuration","MIT_001;MIT_013","EVID:lender-IC-benchmark"
+RSK_003,DEV_004,BASE_000_CORE,"Late discovery of Natura/forest/archaeology constraints triggers new steps and delay.",4,4,High,"Poor early GIS; land status uncertainty; insufficient desk study","MIT_001;MIT_002","EVID:expert-judgment"
+RSK_006,ENV_020,ENV_100_AEPO_CATEGORY_A,"EIA dossier incomplete -> repeated requests and timeline extension.",4,4,High,"Weak baseline studies; inconsistent maps; missing annexes","MIT_004;MIT_013","EVID:lender-IC-benchmark"
+RSK_007,ENV_022,ENV_100_AEPO_CATEGORY_A,"Consultees delay or escalate conditions, extending AEPO timeline.",4,4,High,"Authority workload; conflicting opinions","MIT_003;MIT_005;MIT_013","EVID:public-backlog-indicators"
+RSK_015,GRID_055,GRID_010_DEDDHE_PV_OR_PV_STORAGE,"Grid studies reveal reinforcement needs -> long delay and higher capex.",4,5,High,"Network saturation; upgrade dependency; iterative requests","MIT_007;MIT_008;MIT_013","EVID:public-backlog-indicators"
+RSK_021,GRID_060,BASE_000_CORE,"Testing/energization fails due to protection/telemetry non-conformance.",3,4,Medium,"SCADA readiness; protection settings","MIT_012;MIT_013","EVID:lender-IC-benchmark"
+RSK_031,PUB_120,BASE_000_CORE,"Missing publication evidence breaks audit/financing covenant readiness.",3,4,Medium,"Fragmented channels; late evidence capture","MIT_013","EVID:lender-IC-benchmark"

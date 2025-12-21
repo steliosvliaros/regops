@@ -1,0 +1,46 @@
+items:
+  - code: DEV
+    greek_label: "Ανάπτυξη"
+    english_label: "Development"
+    definition: "Early development & screening"
+    legal_anchor: ""
+  - code: ENV
+    greek_label: "Περιβάλλον"
+    english_label: "Environment"
+    definition: "Environmental permitting activities"
+    legal_anchor: ""
+  - code: ENERGY_LICENSE
+    greek_label: "Άδειες Ενέργειας"
+    english_label: "Energy licensing"
+    definition: "Producer certificate and related licensing"
+    legal_anchor: ""
+  - code: GRID
+    greek_label: "Δίκτυο"
+    english_label: "Grid"
+    definition: "Grid connection procedures"
+    legal_anchor: ""
+  - code: CONSTR
+    greek_label: "Κατασκευή"
+    english_label: "Construction"
+    definition: "Construction permits and execution"
+    legal_anchor: ""
+  - code: COMM
+    greek_label: "Θέση σε λειτουργία"
+    english_label: "Commissioning"
+    definition: "Commissioning & handover"
+    legal_anchor: ""
+  - code: OPER
+    greek_label: "Λειτουργία"
+    english_label: "Operations"
+    definition: "Operational compliance"
+    legal_anchor: ""
+  - code: MOD
+    greek_label: "Τροποποίηση"
+    english_label: "Modification"
+    definition: "Modification/change control"
+    legal_anchor: ""
+  - code: DECOM
+    greek_label: "Αποξήλωση"
+    english_label: "Decommissioning"
+    definition: "Decommissioning & closeout"
+    legal_anchor: ""

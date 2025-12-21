@@ -1,0 +1,16 @@
+project_id: "DEMO_PV_B2_NATURA"
+project_name: "Demo PV (B2, Natura)"
+plan_start_date: "2026-01-05"
+
+classification: "B2"
+environmental_regime: "PPD"
+project_type: "PV"
+grid_interaction: "DEDDHE"
+capacity_band: "MW_1_20"
+regulatory_path: "STANDARD"
+location_constraint: "NATURA"
+
+# Optional metadata (free-form)
+meta:
+  region: "Greece"
+  notes: "Example profile used by notebook 04 for instantiation."

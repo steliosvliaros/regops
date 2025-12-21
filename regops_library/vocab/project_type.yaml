@@ -1,0 +1,16 @@
+items:
+  - code: PV
+    greek_label: "Φ/Β"
+    english_label: "PV"
+    definition: "Photovoltaic generation project."
+    legal_anchor: ""
+  - code: PV_STORAGE
+    greek_label: "Φ/Β+Αποθήκευση"
+    english_label: "PV+Storage"
+    definition: "PV coupled with energy storage."
+    legal_anchor: ""
+  - code: STORAGE
+    greek_label: "Αποθήκευση"
+    english_label: "Storage-only"
+    definition: "Standalone energy storage."
+    legal_anchor: ""

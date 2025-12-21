@@ -1,0 +1,21 @@
+items:
+  - code: LTE_500KW
+    greek_label: "≤500kW"
+    english_label: "≤500kW"
+    definition: "Installed capacity up to 500kW."
+    legal_anchor: ""
+  - code: LTE_1MW
+    greek_label: "≤1MW"
+    english_label: "≤1MW"
+    definition: "Installed capacity up to 1MW."
+    legal_anchor: ""
+  - code: MW_1_20
+    greek_label: "1–20MW"
+    english_label: "1–20MW"
+    definition: "Installed capacity between 1 and 20 MW."
+    legal_anchor: ""
+  - code: GT_20MW
+    greek_label: ">20MW"
+    english_label: ">20MW"
+    definition: "Installed capacity greater than 20 MW."
+    legal_anchor: ""

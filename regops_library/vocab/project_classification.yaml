@@ -1,0 +1,26 @@
+items:
+  - code: A1
+    greek_label: "Α1"
+    english_label: "A1"
+    definition: "Category A1 projects under Greek EIA classification."
+    legal_anchor: "GR_LAW_4014_2011"
+  - code: A2
+    greek_label: "Α2"
+    english_label: "A2"
+    definition: "Category A2 projects under Greek EIA classification."
+    legal_anchor: "GR_LAW_4014_2011"
+  - code: B
+    greek_label: "Β"
+    english_label: "B (umbrella)"
+    definition: "Category B umbrella (includes B1 and B2)."
+    legal_anchor: "GR_LAW_4014_2011"
+  - code: B1
+    greek_label: "Β1"
+    english_label: "B1"
+    definition: "Category B1 subcategory under EIA classification."
+    legal_anchor: "GR_LAW_4014_2011"
+  - code: B2
+    greek_label: "Β2"
+    english_label: "B2"
+    definition: "Category B2 subcategory under EIA classification."
+    legal_anchor: "GR_LAW_4014_2011"

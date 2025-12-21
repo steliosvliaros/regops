@@ -1,0 +1,2 @@
+task_code,rule_scope,appeal_type,window_days,start_event,legal_source,notes
+ENV_023,APP_GOV_ANNULMENT,ΑΙΤΗΣΗ_ΑΚΥΡΩΣΗΣ,60,"From notification/publication or full knowledge of AEPO decision",GR_PD_18_1989:Art45-46,"General 60-day annulment action window."

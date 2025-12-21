@@ -1,0 +1,16 @@
+items:
+  - code: PUBLICATION
+    greek_label: "Δημοσίευση"
+    english_label: "Publication"
+    definition: "Public posting requirement."
+    legal_anchor: ""
+  - code: NOTIFICATION
+    greek_label: "Κοινοποίηση"
+    english_label: "Notification"
+    definition: "Formal notification requirement."
+    legal_anchor: ""
+  - code: REGISTRATION
+    greek_label: "Καταχώριση"
+    english_label: "Registration"
+    definition: "Registry entry requirement."
+    legal_anchor: ""

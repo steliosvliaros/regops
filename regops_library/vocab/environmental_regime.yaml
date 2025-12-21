@@ -1,0 +1,21 @@
+items:
+  - code: AEPO
+    greek_label: "ΑΕΠΟ"
+    english_label: "Environmental Approval (AEPO)"
+    definition: "Environmental terms approval decision (AΕΠΟ)."
+    legal_anchor: "GR_LAW_4014_2011"
+  - code: PPD
+    greek_label: "ΠΠΔ"
+    english_label: "Standard Environmental Commitments (PPD)"
+    definition: "Standard environmental commitments regime (ΠΠΔ)."
+    legal_anchor: "GR_LAW_4014_2011"
+  - code: COMMITMENTS
+    greek_label: "Δεσμεύσεις"
+    english_label: "Commitments"
+    definition: "Commitments regime (where applicable) distinct from AEPO/PPD."
+    legal_anchor: ""
+  - code: EXEMPT
+    greek_label: "Εξαίρεση"
+    english_label: "Exemption"
+    definition: "Exempt from AEPO/PPD requirements per classification rules."
+    legal_anchor: "GR_LAW_4014_2011"

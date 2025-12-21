@@ -1,0 +1,21 @@
+items:
+  - code: DEDDHE
+    greek_label: "ΔΕΔΔΗΕ"
+    english_label: "HEDNO (Distribution)"
+    definition: "Grid-connected via distribution operator."
+    legal_anchor: "GR_RAE_DEC_395_2016"
+  - code: ADMIE
+    greek_label: "ΑΔΜΗΕ"
+    english_label: "IPTO (Transmission)"
+    definition: "Grid-connected via transmission operator."
+    legal_anchor: "GR_RAE_DEC_57_2012"
+  - code: NON_GRID
+    greek_label: "Εκτός δικτύου"
+    english_label: "Non-grid"
+    definition: "No grid interaction."
+    legal_anchor: ""
+  - code: ISLANDED
+    greek_label: "Νησιωτικό/Αυτόνομο"
+    english_label: "Islanded"
+    definition: "Islanded system interaction."
+    legal_anchor: ""

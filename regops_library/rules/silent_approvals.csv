@@ -1,0 +1,3 @@
+task_code,silent_approval,conditions,trigger_event,legal_source
+ENV_023,YES,"AEPO drafting proceeds after consultation window; late opinions do not automatically block drafting where law permits proceeding per statutory procedure.","Consultation window ends","GR_LAW_4014_2011:Art3/Art4"
+ADMIN_095,NO,"For omissions without a specific deadline, after 3 months from request it is treated as silent refusal (enabling judicial action).","Request to administration for owed action","GR_PD_18_1989:Art45-46"

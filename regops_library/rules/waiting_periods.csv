@@ -1,0 +1,2 @@
+task_code,rule_scope,waiting_days,waiting_type,trigger_event,legal_source,notes
+ADMIN_095,APP_GOV_OMISSION,90,mandatory_wait,"Request to administration for owed action",GR_PD_18_1989:Art45-46,"Calendar days: 3 months to treat omission as refusal where no special deadline exists."

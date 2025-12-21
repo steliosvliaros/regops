@@ -1,0 +1,4 @@
+task_code,authority_name,response_days,trigger_event,legal_source,notes
+ENV_022,"Συναρμόδιοι γνωμοδοτούντες φορείς (Α1)",45,"Κοινοποίηση φακέλου ΜΠΕ για γνωμοδότηση","GR_LAW_4014_2011:Art3","Working days; consultation window."
+ENV_022,"Συναρμόδιοι γνωμοδοτούντες φορείς (Α2)",35,"Κοινοποίηση φακέλου ΜΠΕ για γνωμοδότηση","GR_LAW_4014_2011:Art4","Working days; consultation window."
+ADMIN_095,"Αρχή που παρέλαβε αίτηση θεραπείας/ιεραρχική προσφυγή",30,"Υποβολή αίτησης θεραπείας ή ιεραρχικής προσφυγής","GR_LAW_2690_1999:Art24","Calendar days unless special rule applies."

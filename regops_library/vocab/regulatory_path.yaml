@@ -1,0 +1,16 @@
+items:
+  - code: STANDARD
+    greek_label: "Τυπική"
+    english_label: "Standard"
+    definition: "Standard regulatory pathway."
+    legal_anchor: ""
+  - code: FAST_TRACK
+    greek_label: "Fast-track"
+    english_label: "Fast-track"
+    definition: "Fast-track pathway (where legally provided)."
+    legal_anchor: "GR_LAW_4951_2022"
+  - code: EXEMPT
+    greek_label: "Εξαιρούμενη"
+    english_label: "Exempt"
+    definition: "Exempt pathway (rare; profile-specific)."
+    legal_anchor: ""

@@ -1,0 +1,161 @@
+task_code,phase_code,task_name,task_description_md,hard_legal_blocker,parallelizable,default_order
+DEV_001,DEV,"Create/Validate Project Profile","**Goal:** Establish the project profile inputs used to compile the plan.
+
+**Inputs:** classification, regime, type, grid interaction, capacity band, regulatory path, constraints.
+**Output:** validated profile snapshot for audit.",No,Yes,10
+DEV_002,DEV,"Environmental Classification & Screening Record","**Goal:** Determine and record A1/A2/B1/B2 and resulting environmental regime.
+
+**Output:** recorded classification row reference + regime decision (AEPO/PPD/EXEMPT).",Yes,No,20
+DEV_003,DEV,"RES Spatial Framework Siting Screen","**Goal:** Screen siting against Special Spatial Framework for RES.
+
+**Output:** siting compliance notes; constraints flagged for downstream tasks.",Yes,Yes,30
+DEV_004,DEV,"Constraint Identification (Natura/Forest/Archaeology)","**Goal:** Identify whether Natura/forest/archaeology constraints apply.
+
+**Output:** constraint flags used by applicability rules.",Yes,Yes,40
+DEV_005,DEV,"Forest Process Trigger & Act (if applicable)","**Goal:** Trigger/obtain forest-related act(s) where forest land/status applies.
+
+**Output:** forest authority act/opinion recorded; references attached.",Yes,Yes,50
+DEV_006,DEV,"Archaeology Clearance/Opinion (if applicable)","**Goal:** Trigger archaeology authority process where constraint applies.
+
+**Output:** archaeology approval/opinion recorded; references attached.",Yes,Yes,60
+DEV_007,DEV,"Fast-track Eligibility/Path Confirmation (if applicable)","**Goal:** Confirm FAST_TRACK within plan compilation.
+
+**Output:** documented basis for FAST_TRACK selection.",No,Yes,70
+
+ENV_010,ENV,"Confirm Environmental Regime & Traceability Record","**Goal:** Record environmental regime selection as a traceable decision.
+
+**Output:** AEPO/PPD/EXEMPT decision recorded with instrument anchors.",Yes,Yes,100
+ENV_011,ENV,"Prepare Natura EOA Package (Category B)","**Goal:** Prepare EOA where required for Natura under Category B.
+
+**Output:** EOA package prepared per specs.",Yes,Yes,110
+ENV_012,ENV,"Submit/Manage Natura EOA Review (Category B)","**Goal:** Submit EOA and manage authority review/feedback loop.
+
+**Output:** review outcome recorded; conditions integrated if issued.",Yes,No,120
+ENV_013,ENV,"Document Environmental Exemption (if applicable)","**Goal:** When EXEMPT, document why no AEPO/PPD applies.
+
+**Output:** exemption memo + anchor references stored.",Yes,Yes,130
+
+ENV_020,ENV,"AEPO Dossier Preparation (Category A)","**Goal:** Prepare AEPO/EIA dossier.
+
+**Output:** complete dossier pack ready for submission.",Yes,Yes,200
+ENV_021,ENV,"AEPO Submission","**Goal:** Submit AEPO application.
+
+**Output:** submission evidence + reference number recorded.",Yes,No,210
+ENV_022,ENV,"AEPO Consultation & Opinions Management","**Goal:** Manage consultation requests/opinions in AEPO process.
+
+**Output:** opinion log + responses incorporated.",Yes,Yes,220
+ENV_023,ENV,"AEPO Decision Receipt + Publication/Service","**Goal:** Receive AEPO decision and ensure required publication/service is completed.
+
+**Output:** published/served decision evidence recorded.",Yes,No,230
+ENV_024,ENV,"Integrate AEPO Conditions into Execution Controls","**Goal:** Translate AEPO conditions into actionable compliance items.
+
+**Output:** conditions summary attached to project tasks/checklists.",Yes,Yes,240
+
+ENV_030,ENV,"Apply PV PPD (Category B PV)","**Goal:** Apply PV PPD commitments.
+
+**Output:** PPD commitments recorded + compliance checklist attached.",Yes,Yes,300
+ENV_031,ENV,"Apply Storage PPD (Category B Storage)","**Goal:** Apply storage PPD commitments.
+
+**Output:** storage PPD commitments recorded + compliance checklist attached.",Yes,Yes,310
+ENV_032,ENV,"PPD Notifications / Publication Record (if applicable)","**Goal:** Record any notifications/publication steps required by PPD framework.
+
+**Output:** evidence of notification/publication recorded.",No,Yes,320
+
+LIC_040,ENERGY_LICENSE,"Producer Certificate Application (if applicable)","**Goal:** File Producer Certificate where required.
+
+**Output:** application evidence and registry references.",Yes,Yes,400
+LIC_041,ENERGY_LICENSE,"Producer Certificate Issuance Record","**Goal:** Record issuance/updates of Producer Certificate.
+
+**Output:** certificate details stored; key identifiers recorded.",Yes,No,410
+LIC_042,ENERGY_LICENSE,"Producer Certificate Amendment (if modification)","**Goal:** Amend Producer Certificate if modification triggers it.
+
+**Output:** amendment decision and updated registry references.",Yes,Yes,420
+
+GRID_050,GRID,"Grid Interaction Path Confirmation","**Goal:** Confirm grid interaction dimension.
+
+**Output:** grid path recorded for downstream tasks.",Yes,Yes,500
+GRID_051,GRID,"Priority Framework Check (Final Offer)","**Goal:** Determine whether priority framework for final offers applies.
+
+**Output:** priority applicability recorded.",No,Yes,510
+GRID_052,GRID,"DEDDHE PV Connection Application (docs + submission)","**Goal:** Submit PV connection application via DEDDHE.
+
+**Output:** submission evidence + guarantees evidence recorded.",Yes,No,520
+GRID_053,GRID,"ADMIE/Other PV Connection Application (submission)","**Goal:** Submit connection request to ADMIE.
+
+**Output:** submission evidence recorded.",Yes,No,530
+GRID_054,GRID,"Standalone Storage Final Offer Request Submission","**Goal:** Submit request for standalone storage final offer.
+
+**Output:** submission evidence recorded.",Yes,No,540
+GRID_055,GRID,"Connection Studies / Clarifications Loop","**Goal:** Manage technical studies and clarifications.
+
+**Output:** study exchange log; deliverables archived.",Yes,Yes,550
+GRID_056,GRID,"Final Offer Receipt & Acceptance Record","**Goal:** Receive final offer and record acceptance.
+
+**Output:** offer terms recorded; acceptance evidence attached.",Yes,No,560
+GRID_057,GRID,"Guarantees / Securities Posting Record","**Goal:** Record posting of required guarantees.
+
+**Output:** guarantee evidence attached.",Yes,Yes,570
+GRID_058,GRID,"Connection Agreement Execution","**Goal:** Execute connection agreement.
+
+**Output:** signed agreement stored.",Yes,No,580
+GRID_059,GRID,"Connection Works Execution Coordination","**Goal:** Coordinate/execute works for connection.
+
+**Output:** works completion evidence, as-built references.",Yes,Yes,590
+GRID_060,GRID,"Grid Tests / Energization / Acceptance","**Goal:** Complete tests and energization/acceptance.
+
+**Output:** energization/acceptance documentation stored.",Yes,No,600
+
+CONSTR_070,CONSTR,"Building/Works Permit & Planning Compliance","**Goal:** Obtain building/works permits and planning approvals.
+
+**Output:** permits recorded; permit conditions attached.",Yes,Yes,700
+CONSTR_071,CONSTR,"Construction HSE Setup (PD 305/1996)","**Goal:** Establish site HSE governance.
+
+**Output:** HSE documents stored; notifications evidence recorded.",Yes,Yes,710
+CONSTR_072,CONSTR,"Construction Execution Governance","**Goal:** Execute construction under permit and HSE constraints.
+
+**Output:** key inspections/records attached.",No,Yes,720
+
+COMM_080,COMM,"Commissioning & Handover (Grid/Operator closeout)","**Goal:** Commission system and close out operator requirements.
+
+**Output:** commissioning/handover package archived.",Yes,No,800
+
+OPER_090,OPER,"Operational Compliance (ADMIE/DEDDHE codes)","**Goal:** Set ongoing compliance obligations under applicable grid codes.
+
+**Output:** compliance controls/checks defined and tracked.",No,Yes,900
+OPER_091,OPER,"Storage Market/Balance Compliance (if applicable)","**Goal:** Track compliance obligations where storage participates in relevant market mechanisms.
+
+**Output:** compliance record anchored to applicable rulebooks.",No,Yes,910
+OPER_093,OPER,"Non-grid / Islanded Operational Compliance","**Goal:** Track compliance where NON_GRID/ISLANDED.
+
+**Output:** operational compliance controls defined.",No,Yes,920
+
+ADMIN_095,DEV,"Administrative Deadlines & Silent-Approval Tracking","**Goal:** Track administrative deadlines and silence windows.
+
+**Output:** deadline tracker maintained; evidence of service/receipt stored.",No,Yes,950
+
+MOD_100,MOD,"Modification Screening (Environmental)","**Goal:** Screen modification against environmental permitting triggers.
+
+**Output:** screening record + decision (AEPO amendment/PPD update/etc.).",Yes,Yes,1000
+MOD_101,MOD,"Modification Screening (Grid)","**Goal:** Screen modification against grid terms.
+
+**Output:** change request evidence + operator responses recorded.",Yes,Yes,1010
+MOD_102,MOD,"Producer Certificate Update (if triggered)","**Goal:** Trigger producer certificate amendment tasks when needed.
+
+**Output:** updated certificate references.",Yes,Yes,1020
+
+DECOM_110,DECOM,"Decommissioning Plan & Waste Stream Register","**Goal:** Plan decommissioning and identify waste streams.
+
+**Output:** decommission plan + waste register stored.",Yes,Yes,1100
+DECOM_111,DECOM,"PV WEEE Compliance (Modules)","**Goal:** Ensure PV module end-of-life handling aligns with WEEE.
+
+**Output:** scheme participation + disposal evidence archived.",Yes,Yes,1110
+DECOM_112,DECOM,"Battery EPR / Waste Compliance (BESS)","**Goal:** Ensure battery lifecycle/end-of-life obligations are met.
+
+**Output:** battery compliance + disposal evidence archived.",Yes,Yes,1120
+DECOM_113,DECOM,"Site Restoration & Closeout Record","**Goal:** Restore site per permits/conditions.
+
+**Output:** restoration evidence + closure record.",Yes,Yes,1130
+
+PUB_120,ENV,"Publication / Notification Evidence Record","**Goal:** Record evidence for required publication/notifications.
+
+**Output:** publication links/files stored with date/time.",No,Yes,1200

@@ -1,0 +1,256 @@
+# Rule evaluation: apply all matching rules; merge include_tasks; then remove exclude_tasks.
+# Wildcard: ANY matches any value.
+
+- rule_id: BASE_000_CORE
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks:
+      - DEV_001
+      - DEV_002
+      - DEV_003
+      - DEV_004
+      - ENV_010
+      - GRID_050
+      - CONSTR_070
+      - CONSTR_071
+      - CONSTR_072
+      - COMM_080
+      - ADMIN_095
+      - MOD_100
+      - MOD_101
+      - MOD_102
+      - DECOM_110
+      - DECOM_113
+      - PUB_120
+
+- rule_id: LOC_010_NATURA_B_EOA
+  match:
+    classification: [B, B1, B2]
+    project_type: [ANY]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [NATURA]
+    environmental_regime: [PPD, COMMITMENTS]
+  apply:
+    include_tasks: [ENV_011, ENV_012]
+
+- rule_id: LOC_020_FOREST
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [FOREST]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [DEV_005]
+
+- rule_id: LOC_030_ARCHAEOLOGY
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ARCHAEOLOGY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [DEV_006]
+
+- rule_id: PATH_010_FAST_TRACK
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [FAST_TRACK]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [DEV_007]
+
+- rule_id: ENV_100_AEPO_CATEGORY_A
+  match:
+    classification: [A1, A2]
+    project_type: [ANY]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [AEPO]
+  apply:
+    include_tasks: [ENV_020, ENV_021, ENV_022, ENV_023, ENV_024]
+    exclude_tasks: [ENV_030, ENV_031, ENV_032, ENV_013, ENV_011, ENV_012]
+
+- rule_id: ENV_200_PPD_PV
+  match:
+    classification: [B, B1, B2]
+    project_type: [PV]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [PPD]
+  apply:
+    include_tasks: [ENV_030, ENV_032]
+    exclude_tasks: [ENV_020, ENV_021, ENV_022, ENV_023, ENV_024, ENV_013]
+
+- rule_id: ENV_210_PPD_STORAGE
+  match:
+    classification: [B, B1, B2]
+    project_type: [STORAGE]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [PPD]
+  apply:
+    include_tasks: [ENV_031, ENV_032]
+    exclude_tasks: [ENV_020, ENV_021, ENV_022, ENV_023, ENV_024, ENV_013]
+
+- rule_id: ENV_220_PPD_PV_STORAGE
+  match:
+    classification: [B, B1, B2]
+    project_type: [PV_STORAGE]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [PPD]
+  apply:
+    include_tasks: [ENV_030, ENV_031, ENV_032]
+    exclude_tasks: [ENV_020, ENV_021, ENV_022, ENV_023, ENV_024, ENV_013]
+
+- rule_id: ENV_300_EXEMPT
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [EXEMPT]
+  apply:
+    include_tasks: [ENV_013]
+    exclude_tasks: [ENV_020, ENV_021, ENV_022, ENV_023, ENV_024, ENV_030, ENV_031, ENV_032, ENV_011, ENV_012]
+
+- rule_id: LIC_010_PRODUCER_CERT_STANDARD_OR_FAST
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [DEDDHE, ADMIE]
+    capacity_band: [LTE_500KW, LTE_1MW, MW_1_20, GT_20MW]
+    regulatory_path: [STANDARD, FAST_TRACK]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [LIC_040, LIC_041]
+
+- rule_id: GRID_010_DEDDHE_PV_OR_PV_STORAGE
+  match:
+    classification: [ANY]
+    project_type: [PV, PV_STORAGE]
+    grid_interaction: [DEDDHE]
+    capacity_band: [LTE_500KW, LTE_1MW, MW_1_20, GT_20MW]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [GRID_051, GRID_052, GRID_055, GRID_056, GRID_057, GRID_058, GRID_059, GRID_060]
+    exclude_tasks: [GRID_053, GRID_054]
+
+- rule_id: GRID_020_ADMIE_PV_OR_PV_STORAGE
+  match:
+    classification: [ANY]
+    project_type: [PV, PV_STORAGE]
+    grid_interaction: [ADMIE]
+    capacity_band: [LTE_500KW, LTE_1MW, MW_1_20, GT_20MW]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [GRID_051, GRID_053, GRID_055, GRID_056, GRID_057, GRID_058, GRID_059, GRID_060]
+    exclude_tasks: [GRID_052, GRID_054]
+
+- rule_id: GRID_030_STORAGE_GRID_CONNECTED
+  match:
+    classification: [ANY]
+    project_type: [STORAGE]
+    grid_interaction: [DEDDHE, ADMIE]
+    capacity_band: [LTE_500KW, LTE_1MW, MW_1_20, GT_20MW]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [GRID_051, GRID_054, GRID_055, GRID_056, GRID_057, GRID_058, GRID_059, GRID_060]
+    exclude_tasks: [GRID_052, GRID_053]
+
+- rule_id: GRID_900_NON_GRID_OR_ISLANDED
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [NON_GRID, ISLANDED]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [OPER_093]
+    exclude_tasks: [GRID_051, GRID_052, GRID_053, GRID_054, GRID_055, GRID_056, GRID_057, GRID_058, GRID_059, GRID_060, OPER_090]
+
+- rule_id: OPER_010_GRID_CODE_COMPLIANCE
+  match:
+    classification: [ANY]
+    project_type: [ANY]
+    grid_interaction: [DEDDHE, ADMIE]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [OPER_090]
+
+- rule_id: OPER_020_STORAGE_MARKET_COMPLIANCE
+  match:
+    classification: [ANY]
+    project_type: [STORAGE, PV_STORAGE]
+    grid_interaction: [DEDDHE, ADMIE]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [OPER_091]
+
+- rule_id: DECOM_010_PV_WEEE
+  match:
+    classification: [ANY]
+    project_type: [PV, PV_STORAGE]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [DECOM_111]
+
+- rule_id: DECOM_020_BESS_BATTERY
+  match:
+    classification: [ANY]
+    project_type: [STORAGE, PV_STORAGE]
+    grid_interaction: [ANY]
+    capacity_band: [ANY]
+    regulatory_path: [ANY]
+    location_constraint: [ANY]
+    environmental_regime: [ANY]
+  apply:
+    include_tasks: [DECOM_112]

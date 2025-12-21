@@ -1,0 +1,10 @@
+mitigation_id,mitigation_text,applicable_drivers,owner_role_code,lead_time_days
+MIT_001,"Run early GIS + constraints screening with documented evidence pack.","Poor early GIS; boundary disputes; sensitive receptors",CONSULTING,10
+MIT_002,"Commission land-status/forest-map opinion early; resolve overlaps before submissions.","Forest map inconsistencies; land title issues",CONSULTING,20
+MIT_003,"Pre-consult key consultees to validate dossier scope and likely conditions.","Authority workload; conflicting opinions",CONSULTING,15
+MIT_004,"Lender-grade QA for EIA/permit packs (checklists, consistency, version control).","Incomplete dossier; inconsistent maps",CONSULTING,10
+MIT_005,"Stakeholder mapping + engagement plan for high-sensitivity projects.","Local objections; procedural challenges",CONSULTING,20
+MIT_007,"Grid pre-feasibility + POI alternatives; keep fallback options.","Network saturation; POI constraints",CONSULTING,20
+MIT_008,"Maintain a grid interface pack + weekly operator cadence.","Iterative requests; annex churn",GRID_OPERATOR,7
+MIT_012,"Detailed commissioning/test plan early with operator checkpoints.","Test failures; SCADA gaps",GRID_OPERATOR,20
+MIT_013,"Strict document control + evidence capture rules (IDs, links, snapshots).","Late evidence capture; fragmented channels",CONSULTING,5

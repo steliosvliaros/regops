@@ -1,0 +1,21 @@
+items:
+  - code: NATURA
+    greek_label: "Natura"
+    english_label: "Natura"
+    definition: "Located in/near Natura protected areas."
+    legal_anchor: "GR_LAW_3937_2011"
+  - code: FOREST
+    greek_label: "Δάσος"
+    english_label: "Forest"
+    definition: "Forest land/status implications apply."
+    legal_anchor: "GR_LAW_998_1979"
+  - code: ARCHAEOLOGY
+    greek_label: "Αρχαιολογία"
+    english_label: "Archaeology"
+    definition: "Cultural heritage / archaeology constraints apply."
+    legal_anchor: "GR_LAW_3028_2002"
+  - code: NONE
+    greek_label: "Κανένα"
+    english_label: "None"
+    definition: "No special location constraint flagged."
+    legal_anchor: ""
