@@ -45,6 +45,14 @@ class ClickUpClient:
         return self.request("PUT", path, json_body=json_body)
 
     # --- convenience methods ---
+    def get_authorized_workspaces(self) -> Dict[str, Any]:
+        # docs: GET /team
+        return self.get("team")
+    
+    def get_spaces(self, team_id: str) -> Dict[str, Any]:
+        # docs: GET /team/{team_id}/space
+        return self.get(f"team/{team_id}/space")
+    
     def get_folders(self, space_id: str) -> Dict[str, Any]:
         return self.get(f"space/{space_id}/folder")
 
@@ -67,3 +75,4 @@ class ClickUpClient:
     def add_dependency(self, task_id: str, depends_on: str) -> Dict[str, Any]:
         # docs: POST /task/{task_id}/dependency {depends_on: <id>}
         return self.post(f"task/{task_id}/dependency", {"depends_on": depends_on})
+   

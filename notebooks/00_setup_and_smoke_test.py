@@ -15,6 +15,7 @@ LIB_ROOT = ROOT / "regops_library"
 
 def main() -> None:
     s = get_settings()
+    print(s)
     console.print("[bold]RegOps Smoke Test[/bold]")
     console.print(f"Dry run: {s.dry_run}")
 

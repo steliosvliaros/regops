@@ -21,6 +21,7 @@ def main() -> None:
     report = run_all_validations(lib)
 
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUT_DIR / f"{ts}_validation_report.json"
     out_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 

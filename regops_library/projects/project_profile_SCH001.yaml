@@ -1,0 +1,16 @@
+project_id: "SCH001"
+project_name: "PV 12MW Thessaly"
+plan_start_date: "2026-01-05"
+
+classification: "B2"
+environmental_regime: "PPD"
+project_type: "PV"
+grid_interaction: "DEDDHE"
+capacity_band: "MW_1_20"
+regulatory_path: "STANDARD"
+location_constraint: "NONE"
+
+# Optional metadata (free-form)
+meta:
+  region: "Greece"
+  notes: "First real project instantiation"

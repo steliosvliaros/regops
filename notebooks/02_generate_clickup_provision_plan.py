@@ -20,6 +20,7 @@ def main() -> None:
     field_map = load_clickup_field_map(MAP_PATH)
     plan = generate_provision_plan(field_map)
 
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     console.print("[bold]Provision plan generated[/bold]")
     console.print(f"Wrote: {OUT_PATH}")
