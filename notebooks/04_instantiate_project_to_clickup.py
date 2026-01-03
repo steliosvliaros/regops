@@ -1,4 +1,3 @@
-# notebooks/04_instantiate_project_to_clickup.py
 from __future__ import annotations
 
 import json
@@ -23,7 +22,15 @@ ROOT = Path(__file__).resolve().parents[1]
 LIB_ROOT = ROOT / "regops_library"
 
 # Change this to your real profile file
-PROFILE_PATH = LIB_ROOT / "projects" / "project_profile_SCH001.yaml"
+PROFILE_PATH = LIB_ROOT / "projects" / "project_profile_example.yaml"
+
+# Resolved IDs written by notebook 03
+RESOLVED_IDS_PATH = ROOT / "outputs" / "provision_plans" / "resolved_clickup_ids.json"
+
+BOOLEAN_DROPDOWN_ALIASES = {
+    True: ["Yes", "YES", "True", "TRUE", "Ναι", "ΝΑΙ", "On", "ON", "1"],
+    False: ["No", "NO", "False", "FALSE", "Όχι", "ΟΧΙ", "Off", "OFF", "0"],
+}
 
 
 # -----------------------------
@@ -47,12 +54,21 @@ def load_profile(path: Path) -> ProjectProfile:
 
 
 def date_to_ms(d: date) -> int:
-    """ClickUp expects ms epoch. Use local midnight; good enough for planning dates."""
+    """ClickUp expects ms epoch. Local midnight is fine for planning dates."""
     return int(datetime.combine(d, time.min).timestamp() * 1000)
 
 
+def resolve_target_list_id(settings) -> Optional[str]:
+    if settings.clickup_target_list_id:
+        return settings.clickup_target_list_id
+    if RESOLVED_IDS_PATH.exists():
+        data = json.loads(RESOLVED_IDS_PATH.read_text(encoding="utf-8"))
+        return data.get("list_id")
+    return None
+
+
 # -----------------------------
-# ClickUp custom field helpers
+# ClickUp helpers
 # -----------------------------
 def fetch_all_tasks(client: ClickUpClient, list_id: str, include_closed: bool = True) -> List[Dict[str, Any]]:
     """Best-effort pagination until empty."""
@@ -77,10 +93,13 @@ def get_list_fields_by_name(client: ClickUpClient, list_id: str) -> Dict[str, Di
 
 
 def dropdown_option_id(field: Dict[str, Any], option_name: str) -> Optional[str]:
+    """Case-insensitive dropdown option match."""
     type_config = field.get("type_config") or {}
     options = type_config.get("options") or []
+    target = str(option_name).strip().casefold()
     for opt in options:
-        if opt.get("name") == option_name:
+        opt_name = str(opt.get("name", "")).strip().casefold()
+        if opt_name == target:
             return opt.get("id")
     return None
 
@@ -102,7 +121,8 @@ def set_field_value_by_name(
 ) -> None:
     """
     Sets a custom field value by ClickUp field name.
-    - Dropdown: maps option label -> option_id
+    - Dropdown: maps option label -> option_id (case-insensitive)
+      Supports booleans via aliases (Yes/No/Ναι/Όχι/etc).
     - Text/Number: sets value directly
     """
     if desired_value is None:
@@ -122,23 +142,38 @@ def set_field_value_by_name(
             raise RuntimeError(f"Custom field '{field_name}' has no id (unexpected).")
         return
 
-    # Dropdown -> option id
     if is_dropdown_field(field):
+        # Boolean support: try common labels
+        if isinstance(desired_value, bool):
+            for candidate in BOOLEAN_DROPDOWN_ALIASES[desired_value]:
+                opt_id = dropdown_option_id(field, candidate)
+                if opt_id:
+                    client.set_custom_field_value(task_id, field_id, opt_id)
+                    return
+
+            available = [o.get("name") for o in (field.get("type_config") or {}).get("options") or []]
+            raise RuntimeError(
+                f"Dropdown option for boolean '{desired_value}' not found for field '{field_name}'. "
+                f"Available options: {available}"
+            )
+
         opt_id = dropdown_option_id(field, str(desired_value))
         if not opt_id:
+            available = [o.get("name") for o in (field.get("type_config") or {}).get("options") or []]
             raise RuntimeError(
                 f"Dropdown option '{desired_value}' not found for field '{field_name}'. "
-                f"Fix ClickUp dropdown options to match library codes."
+                f"Available options: {available}"
             )
+
         client.set_custom_field_value(task_id, field_id, opt_id)
         return
 
-    # Non-dropdown
+    # Non-dropdown fields
     client.set_custom_field_value(task_id, field_id, desired_value)
 
 
 def extract_task_code_from_task(task: Dict[str, Any], task_code_field_id: str) -> Optional[str]:
-    """Reads the Task Code value from the task's custom_fields list."""
+    """Reads Task Code value from task['custom_fields']."""
     for cf in task.get("custom_fields", []) or []:
         if cf.get("id") == task_code_field_id:
             val = cf.get("value")
@@ -164,7 +199,7 @@ def main() -> None:
     # 2) Compile tasks (enrich descriptions)
     compiled = compile_tasks(lib, task_codes, profile, matched_rules)
 
-    # 3) Compute schedule (toggle here)
+    # 3) Compute schedule
     DURATION_MODE = "practical"  # or "statutory"
     planned = compute_schedule(
         compiled,
@@ -214,23 +249,30 @@ def main() -> None:
     console.print(f"Wrote: {out_dir / 'tasks.csv'}")
 
     # 5) ClickUp upsert
-    if not s.clickup_api_token or not s.clickup_target_list_id:
-        console.print("[yellow]ClickUp token or CLICKUP_TARGET_LIST_ID missing. Skipping ClickUp write.[/yellow]")
+    target_list_id = resolve_target_list_id(s)
+
+    if not s.clickup_api_token or not target_list_id:
+        console.print(
+            "[yellow]ClickUp token or target list id missing.\n"
+            "- Run: python notebooks/03_apply_clickup_provisioning_optional.py (name-first)\n"
+            "- OR set CLICKUP_TARGET_LIST_ID in .env\n[/yellow]"
+        )
         return
 
     client = ClickUpClient(base_url=s.clickup_base_url, token=s.clickup_api_token, dry_run=s.dry_run)
 
     # Load field definitions once
-    fields_by_name = get_list_fields_by_name(client, s.clickup_target_list_id)
+    fields_by_name = get_list_fields_by_name(client, target_list_id)
 
     # Task Code field is mandatory for idempotent upsert
     if "Task Code" not in fields_by_name:
-        console.print("[red]Cannot find 'Task Code' custom field on target list. Create it manually first.[/red]")
+        console.print("[red]Cannot find 'Task Code' custom field on target list.[/red]")
+        console.print("[red]Fix: create list from TEMPLATE that includes fields OR add field manually.[/red]")
         return
     task_code_field_id = fields_by_name["Task Code"]["id"]
 
     # Fetch existing tasks and build index by Task Code
-    existing_tasks = fetch_all_tasks(client, s.clickup_target_list_id, include_closed=True)
+    existing_tasks = fetch_all_tasks(client, target_list_id, include_closed=True)
     existing_by_task_code: Dict[str, Dict[str, Any]] = {}
     for et in existing_tasks:
         tc_val = extract_task_code_from_task(et, task_code_field_id)
@@ -254,10 +296,10 @@ def main() -> None:
 
         if t.task_code in existing_by_task_code:
             tid = existing_by_task_code[t.task_code]["id"]
-            client.put(f"task/{tid}", payload)
+            client.update_task(tid, payload)
             updated += 1
         else:
-            res = client.create_task(s.clickup_target_list_id, payload)
+            res = client.create_task(target_list_id, payload)
             tid = res.get("id") if isinstance(res, dict) else None
             if not tid:
                 console.print(f"[red]Failed to create task for {t.task_code}[/red]")
@@ -266,12 +308,11 @@ def main() -> None:
 
         id_by_task_code[t.task_code] = tid
 
-        # ✅ Set ALL custom fields (this is what fixes your issue)
-        # Task + Phase
+        # ✅ Set ALL custom fields (dropdown-safe, boolean-safe)
         set_field_value_by_name(client, tid, fields_by_name, "Task Code", t.task_code, strict=True)
         set_field_value_by_name(client, tid, fields_by_name, "Phase", t.phase_code)
 
-        # Profile dimensions
+        # Project profile dimensions
         set_field_value_by_name(client, tid, fields_by_name, "Classification", profile.classification)
         set_field_value_by_name(client, tid, fields_by_name, "Environmental Regime", profile.environmental_regime)
         set_field_value_by_name(client, tid, fields_by_name, "Project Type", profile.project_type)
@@ -287,13 +328,8 @@ def main() -> None:
         if t.competent_authority:
             set_field_value_by_name(client, tid, fields_by_name, "Competent Authority", t.competent_authority)
 
-        set_field_value_by_name(
-            client,
-            tid,
-            fields_by_name,
-            "Hard Legal Blocker",
-            "Yes" if t.hard_legal_blocker else "No",
-        )
+        # ✅ Boolean so it maps to whatever your dropdown uses (Yes/No/Όχι/etc)
+        set_field_value_by_name(client, tid, fields_by_name, "Hard Legal Blocker", bool(t.hard_legal_blocker))
 
         if t.statutory_max_days is not None:
             set_field_value_by_name(client, tid, fields_by_name, "Statutory Max Days", float(t.statutory_max_days))
@@ -303,6 +339,7 @@ def main() -> None:
     console.print(f"[bold]ClickUp upsert done[/bold] created={created} updated={updated} dry_run={s.dry_run}")
 
     # 6) Dependencies (best-effort)
+    # ClickUp dependency API: task in path is dependent; depends_on is predecessor.
     for _, r in lib.dependencies.iterrows():
         pre = str(r["predecessor_task_code"])
         suc = str(r["successor_task_code"])
